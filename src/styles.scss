@@ -1,1 +1,74 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --textColor: #5d5d5d;
+  --headingTextColor: #235565;
+  --linkColor: #177998;
+  --primaryBtnTextColor: #fff;
+
+  --primaryBgColor: #fff;
+  --secondaryBgColor: #efefef;
+  --primaryBtnColor: #2CABD3;
+  --primaryBtnHover: #1E94BA;
+  --secondaryBtnColor: #2CABD3;
+  --secondaryBtnHover: #dbdbdb;
+  --toggleBtnColor: #177998;
+
+  --borderColor: #c6c6c6;
+}
+
+body {
+  color: var(--textColor);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: var(--headingTextColor);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.btn-primary {
+  display: block;
+  padding: 5px 10px;
+  border: 1px solid var(--primaryBtnColor);
+  background-color: var(--primaryBtnColor);
+  color: var(--primaryBtnTextColor);
+  border-radius: 3px;
+  font-weight: bold;
+  outline: none;
+  box-shadow: none;
+  transition: background-color 300ms linear;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--primaryBtnHover);
+  }
+
+  &[disabled],
+  &.disabled {
+    cursor: default;
+    border: 1px solid var(--borderColor);
+    background-color: var(--secondaryBgColor);
+    color: var(--textColor);
+    opacity: 0.8;
+  }
+}
+
+.btn-secondary {
+  display: block;
+  padding: 5px 10px;
+  border: 1px solid var(--borderColor);
+  background-color: var(--secondaryBgColor);
+  color: var(--textColor);
+  border-radius: 3px;
+  outline: none;
+  box-shadow: none;
+  transition: background-color 300ms linear;
+
+  &:hover {
+    background-color: var(--secondaryBtnHover);
+  }
+}

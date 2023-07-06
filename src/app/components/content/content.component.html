@@ -1,0 +1,79 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+  <div class="row">
+    <div class="col-8">
+
+      <div formGroupName="name" class="row">
+        <div class="col-6">
+          <mat-form-field>
+            <mat-label>First Name:</mat-label>
+            <input matInput formControlName="first">
+          </mat-form-field>
+        </div>
+
+        <div class="col-6">
+          <mat-form-field>
+            <mat-label>Last Name:</mat-label>
+            <input matInput formControlName="last">
+          </mat-form-field>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-4">
+      <mat-form-field>
+        <mat-label>Email Name: </mat-label>
+        <input matInput formControlName="email">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <button type="submit" class="btn-primary" [disabled]="!contactForm.valid">Add Contact</button>
+</form>
+
+<table class="table mt-4" *ngIf="(selected$ | async)?.length || customContacts.length">
+  <thead>
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Company</th>
+    <th scope="col">Action</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr *ngFor="let contact of selected$ | async; trackBy: trackByFn;">
+    <td>{{ contact.name.first + ' ' + contact.name.last }}</td>
+    <td>{{ contact.email }}</td>
+    <td>{{ contact.company }}</td>
+    <td>
+      <button mat-icon-button color="primary" aria-label="Unselect contact" (click)="toggleContact(contact)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </tr>
+
+  <tr *ngFor="let contact of customContacts; trackBy: trackByFn;">
+    <td>{{ contact.name?.first + ' ' + contact.name?.last }}</td>
+    <td>{{ contact.email }}</td>
+    <td></td>
+    <td>
+      <button mat-icon-button color="primary" aria-label="Unselect contact" (click)="removeCustomContact(contact)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="row">
+  <div class="col mt-4">
+    <button type="button"
+            class="btn-primary m-auto"
+            *ngIf="(selected$ | async)?.length || customContacts.length"
+            (click)="sendInvites()">
+      Send Invites
+    </button>
+  </div>
+</div>
