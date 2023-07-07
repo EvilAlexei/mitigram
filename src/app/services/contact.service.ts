@@ -9,7 +9,7 @@ import { Contact, Group } from '../models/contact.model';
 })
 export class ContactService {
   private contacts: Contact[] = contacts;
-  private selected: Contact[] = contacts;
+  private selected: Contact[] = [];
   private withoutGroup = 'Without Group';
 
   private contactsSubject = new BehaviorSubject<Contact[]>([]);
